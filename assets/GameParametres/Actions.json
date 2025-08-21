@@ -1,0 +1,28 @@
+{
+    "actions" : [
+        {
+            "command" : {
+                "syntax" : "draft",
+                "description" : "assigns soldiers",
+                "parameters" : [
+                    {"name" : "soldierAmount"}
+                ]
+            },
+            "effects" : [
+                { "draft" : "soldierAmount" }
+            ]
+        },
+        {
+            "command" : {
+                "syntax" : "undraft",
+                "description" : "unassigns soldiers",
+                "parameters" : [
+                    {"name" : "soldierAmount"}
+                ]
+            },
+            "effects" : [
+                { "undraft" : "soldierAmount"}
+            ]
+        }
+    ]
+}

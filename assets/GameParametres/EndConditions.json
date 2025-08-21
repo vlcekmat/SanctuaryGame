@@ -1,0 +1,13 @@
+{
+  "resource_end_conditions" : [
+    {
+      "resource" : "wood",
+      "goal_amount" : 100
+    }
+  ],
+  "population_goal" : {
+    "enabled" : true,
+    "goal_amount" : 100
+  },
+  "raiders_destroyed_goal_enabled" : true
+}

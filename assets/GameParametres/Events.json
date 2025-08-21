@@ -1,0 +1,45 @@
+{"events":[
+
+    {
+        "name" : "Nothing",
+        "probability" : 50,
+        "effect" : { "nothing" : 0 }
+    },
+    {
+        "name" : "Stranger",
+        "probability" : 30,
+        "effect" : { "strangerArrives" : 1 }
+    },
+    {
+        "name" : "Plague",
+        "probability" : 5,
+        "effect" : { "killPeople" : 2 }
+    },
+    {
+        "name" : "Fire",
+        "probability" : 5,
+        "effect" : { "destroyBuildings" : 2 }
+    },
+    {
+        "name" : "Trees",
+        "probability" : 30,
+        "effect" : { "modTrees" : 2 }
+    },
+    {
+        "name" : "Rocks",
+        "probability" : 30,
+        "effect" : { "modRocks" : 1 }
+    },
+    {
+        "name" : "Animals",
+        "probability" : 10,
+        "effect" : { "modAnimals" : 4 }
+    },
+    {
+        "name" : "Berries",
+        "probability" : 20,
+        "effect" : { "modBerries" : 2 }
+    }
+]
+
+}

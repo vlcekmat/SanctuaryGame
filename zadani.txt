@@ -1,0 +1,97 @@
+Rámcové zadání z minulého roku:
+
+    Váš engine:
+
+    1) ze souboru nahraje definici světa (mapu, vzhled objektů na mapě, zdroje, lokace protihráčů, ...)
+    2) ze souboru nahraje upravitelné parametry možných budov (vstupy, výstupy, cena stavby, ...)
+    3) ze souboru nahraje definici akcí (katastrofy, úkoly, globální změny, ...)
+    4) umožní simulovat běh světa - přidávání budouv, těžba, ... (uživatel/AI)
+    5) implementuje jednoduchý hodnotící systém (počet lidí, zdrojů, úkoly, ...)
+    6) umožňuje ukládat a načítat rozehrané hry
+    7) Engine může fungovat jako real-time, či tahová hra. Ve znakové podobě, či graficky.
+
+    Kde lze využít polymorfismus? (doporučené)
+
+    Parametry budov: cena, vstupní zdroje, výstupní zdroje, ...
+    Efekty prostředí: vichřice, sucha, hladomor, velká úroda, ...
+    Uživatelské rozhraní: konzole, ncurses, SDL, OpenGL (různé varianty), ...
+    Může fungovat jako kampaň pro jednoho hráče, hráč proti počítači nebo hráč proti hráči.
+
+
+Nové rámcové zadání:
+
+       Implementujte engine pro budovatelskou strategii, je čistě na vás, zda bude engine fungovat na principu
+       jednotlivých tahů nebo v reálném čase. Tím, že se jedná o engine je vaším cílem definovat "příběh" pomocí
+       konfiguračních souborů. Mělo by být tedy jednoduché upravit například "kasárny lučištníků" na "továrnu
+       laserových zbraní". Nesnažte se tak ve svém kódu definovat konkrétní prvky hry.
+
+       Váš engine musí splňovat implementovat funkcionality:
+
+       1) Hra uživatele proti alespoň jedné umělé inteligenci (náhodné tahy nestačí).
+       2) Implementujte alespoň 3 základní suroviny, které se stanou platidlami ve vašem engine.
+       3) Oba hráči můžou stavět budovy, pokud má dostatek surovin, budovy mohou generovat další suroviny či
+       jinak ovlivňovat hru. Hra bude postupně simulovat tento běh a navyšovat nebo snižovat jednotlivé počty surovin.
+       4) Oba hráči můžou provádět akce, za nějakou cenu (či časové omezené), s různými efekty. Efekty mohou cílit na
+       hráče samého (př. modlitba → vyšší úroda, státní svátek → vyšší spokojenost obyvatel, …) nebo na protihráče
+       (př. nájezd → ukradne suroviny soupeři, infiltrace → získá informace o soupeřově stavu, …).
+       Implementujte alespoň 3 takové efekty, přičemž umožňěte, aby akce mohla způsobit i více efektů najednou.
+       5) Implementujte jednoduchý hodnotící systém, který určí kdy a který hráč vyhrál. Taková situace nemusí být
+       nutně jedna. Nemusí být nutně výherní, naopak může být definováno, kdy hráč prohrává.
+       6) Hra musí být konfigurovatelná ze souboru:
+           - definice surovin (př. název, barva, …)
+           - definice budov (př. názvy, vstupy, výstupy, cena stavby, oddolnost, efekty, …),
+           - definice akcí (př. názvy, cena akce, další podmínky, délka trvání, efekty, …),
+           - definice konce hry (podmínky, které musí být splněny)
+
+       7) Hra musí umožnit uložit a případně načíst rozehranou hru.
+
+Specifikované zadání z minulého roku:
+
+    Naprogramovat budovatelskou strategii, která bude realizovaná prostřednictvím terminálu. Hra bude tedy kompletně textově založená a ovládaná hráčem
+    pomocí příkazů. Cílem hry bude vybudovat co největší společnost (A neumřít hlady). Hráč začíná s pouze jedním obyvatelem. Postupně bude získávat suroviny a stavět budovy,
+    které mohou mít různé dopady na svět - zvýšení počtu obyvatel, usnadnění získání nějaké suroviny, atp. Herní cyklus bude fungovat tahově, tedy každý
+    tah smí hráč provést pouze jednu akci - to může například vést k zajímavým herním situacím, kdy bude hráč muset hledat nejvhodnější akci tak, 
+    aby udržel obyvatele nasycené a při živu.
+
+    Dle rámcového zadání: 
+        1) Implicitní definice světa, která definuje entity ve světě, které nejsou přímo součástí hráčovy usedlosti, bude nahrána ze sobouru GameWorld.json,
+        zde může hráč provádět změny a měnit tak počáteční stav světa.
+        2) Třída Building definuje rozhraní všech budov, které budou specifikovány v nějakém Buildings.json souboru, který nahraje třída BuildingPool,
+        tyto budovu pode moct poté hráč stavět prostřednictvím příkazů, pokud má hráč k dispozici dostatek surovin. Jakmile je budova postavena, 
+        a hráč jí přiřadil aspoň minimální počet pracovníků, na začátku každého kola se uplatní její efekt.
+        3) Hráč si může přizpůsobit globální události opět v nějakém .json souboru. Hra poté tento soubor načte a zařadí definované eventy do třídy EventPool,
+        odkud je na základě jejich pravděpodobnosti (to bude jeden z definovatelných parametrů) může na začátku každého kola zavolat. Takové eventy budou
+        například epidemie smrtelné nemoci, vysoká úroda, a tak dále.
+        4) Třídy GameState a GameWorld budou uchovávat informace o hráči a herním světě. Každá hráčova akce může mít přímý, nebo nepřímý efekt
+        na herní svět, například postaví-li hráč více budov pro dřevorubce a zaměstná v něm více dřevorubců, budou ze světa každé kolo rychleji mizet stromy.
+        5) Hodnotícím systémem bude počet obyvatel, který je hráč schopný uživit.
+        6) Všechna data uchovávaná ve třídě GameState budou exportována do binárního souboru, odkud je hra bude moct opět načíst. Načítání i ukládání dat
+        hráč provede pomocí příslušného příkazu.
+        7) Hra funguje tahově - každý tah hráč může zavolat jeden příkaz (vyjma informačních a pár dalších příkazů, u kterých nemá smysl ukončovat kolo),
+        hra je uskutečněná v terminálu a funguje zcela na textové bázi.
+
+    Jak bude využit polymorfismus:
+        Polymorfismus bude v mojí semestrální práci využit hlavně na dvou místech: Zaprvé v definici příkazů, za pomocí kterých hráč ovládá
+        hru. Každý specifický příkaz je třídou dědící z bázové třídy Command. Každý command má nějakou syntaxi (to, co hráč píše do konzole), 
+        popis příkazu, který se zobrazí za každým příkazem po zavolání příkazu "help". Každý příkaz má rovněž implementovanou funkci "executeCommand", která
+        provede požadovanou akci. Díky této atchitektuře je přídání nového příkazu do hry poměrně snadné, stačí definovat novou třídu derivovanou z Command
+        a definovat ji. Pak už jen stačí vytvořit novou instanci třídy tohoto příkazu a vložit jej do pseudo-databáze příkazů nacházející se ve třídě
+        CommandHandler, která má na starosti inicializaci, čtení a volání příkazů. 
+        Další oblastí, ve které bude využit polymorfismus je třída Effect a její derivace. Ta má na starosti být jakýmsi uložištěm pro akce budov a
+        globálních událostí. Efekt může být například růst nových stromů v herním světě, změna stavu hráčových prostředků, vymření části populace atd. Efekty
+        budou identifikovány jménem, díky kterým na ně bude možné odkazovat například při definici globálních událostí v .json souboru, či v souboru 
+        Buildings.json při definici možných budov.
+
+Nové specifikované zadání:
+    Specifikované zadání je totožné se specifikovakým zadáním z minulého roku s modifikacemi za účelem splnění nového rámcového zadání.
+    Hlavní funkcionality, které budou přidané:
+
+    1) Umělá inteligence - Kromě samotného hráče budou ve světě existovat i další osady nájezdníků. Ti mohou každý tah uskutečnit jednu akci,
+    kterou budou volit podle rozhodovacího stromu, (například - má-li kmen nájezdníků málo obyvatel, bude se spíše soustředit na přeskupení,
+    než jen na další slepé útoky na hráče.) Umělá inteligence bude využívat zjednodušenou reprezentaci surovin, ze kterých může platit své akce:
+    (stavba nové osady, rekrutování nových vojáků, atd.). Hráč bude mít možnost na osady postavené umělou inteligencí útočit. Vzniká tím tedy
+    nový možný konec hry - hráč vyhrává, pokud zničí všechny osady patřící umělé inteligenci.
+    2) Definice akcí - příkazy z původní verze hry budou fungovat stále stejně. Přibudou nové příkazy/akce, které budou konfigurovatelné
+    v .json souboru. Tyto akce mohou být například naverbování vojáků.
+    3) Podmínky konce hry: konec hry bude nyní konfigurovatelný. V .json souboru si uživatel může nastavit vlastní podmínky pro výhru, (například
+    když populace osady přesáhne číslo 100.) Další novou podmínkou výhry bude zničení všech osad umělé inteligence.

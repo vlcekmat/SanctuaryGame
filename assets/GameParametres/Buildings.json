@@ -1,0 +1,69 @@
+
+{"buildings":[
+
+    {
+        "name" : "Lumberjack",
+        "occupant_capacity" : 4,
+        "minimum_workers" : 1,
+        "cost" : [{ "wood" : 10 }],
+        "effect" : { "chopTrees" : 1 }
+    },
+    {
+        "name" : "Mine",
+        "occupant_capacity" : 4,
+        "minimum_workers" : 1,
+        "cost" : [{ "stone" : 5 }],
+        "effect" : { "mineRocks" : 1 }
+    },
+    {
+        "name" : "Cabin",
+        "occupant_capacity" : 0,
+        "minimum_workers" : 0,
+        "cost" : [{ "wood" : 5 }, { "stone" : 2 }],
+        "effect" : { "housing" : 4 }
+    },
+    {
+        "name" : "Hunter",
+        "occupant_capacity" : 4,
+        "minimum_workers" : 1,
+        "cost" : [{ "wood" : 5 }, { "stone" : 5 }],
+        "effect" : { "huntAnimals" : 1 }
+    },
+    {
+        "name" : "Breeder",
+        "occupant_capacity" : 4,
+        "minimum_workers" : 1,
+        "cost" : [{ "wood" : 10 }, { "stone" : 5 }],
+        "effect" : { "modAnimals" : 1 }
+    },
+    {
+        "name" : "Gatherer",
+        "occupant_capacity" : 4,
+        "minimum_workers" : 1,
+        "cost" : [{ "wood" : 2 }, { "stone" : 0 }],
+        "effect" : { "gatherBerries" : 2 }
+    },
+    {
+        "name" : "Forester",
+        "occupant_capacity" : 4,
+        "minimum_workers" : 1,
+        "cost" : [{ "wood" : 15 }],
+        "effect" : { "modTrees" : 1 }
+    },
+    {
+        "name" : "Farm",
+        "occupant_capacity" : 4,
+        "minimum_workers" : 1,
+        "cost" : [{ "wood" : 12 }, { "stone" : 7 }],
+        "effect" : { "modBerries" : 2 }
+    },
+    {
+        "name" : "Scout",
+        "occupant_capacity" : 4,
+        "minimum_workers" : 1,
+        "cost" : [{ "wood" : 5 }, { "stone" : 20 }],
+        "effect" : { "modRocks" : 1 }
+    }
+]
+
+}

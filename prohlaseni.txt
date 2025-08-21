@@ -1,0 +1,5 @@
+Čestně prohlašuji, že jsem na práci pracoval samostatně pouze za pomoci jasně 
+deklarovaných zdrojů a že v práci i v dokumentaci jasně vymezuji, které části kódů jsou mým
+originálním dílem, které jsou upravenou verzí a které jsou převzaty v plném rozsahu.
+
+Matěj Vlček
