@@ -1,3 +1,4 @@
+#include <sstream>
 #include <iostream>
 #include <map>
 #include "Commands.h"
