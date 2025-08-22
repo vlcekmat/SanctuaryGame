@@ -17,4 +17,4 @@ sudo apt install graphviz
 
 ## Zobrazení dokumentace
 
-* Byla-li dokumentace vygenerovaná, najdete ji zde: ``/doc/html/index.html``
+* Byla-li dokumentace vygenerovaná, najdete ji zde: ``/doc/index.html``
