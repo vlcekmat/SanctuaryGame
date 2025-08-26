@@ -1,6 +1,6 @@
 CC = g++
-CFLAGS = -std=c++17 -Wall -pedantic -fsanitize=address
-SRCF = ./src
+CFLAGS = -std=c++17 -Wall -pedantic -fsanitize=address -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+RCF = ./src
 TARGET = ./vlcekm15
 OBJS = ./src/main.o ./src/JsonParser/JsonParser.o ./src/Building/Building.o ./src/Commands/Commands.o ./src/CommandHandler/CommandHandler.o ./src/Effect/Effect.o ./src/GlobalEvents/GlobalEvents.o ./src/GameState/GameState.o ./src/GameWorld/GameWorld.o ./src/EventHandler/EventHandler.o ./src/EffectHandler/EffectHandler.o ./src/AI/AI.o ./src/AI/DecisionTree.o ./src/AI/AIState.o ./src/AI/Settlement.o ./src/WinConditions/WinConditions.o ./src/Action/Action.o ./src/Combat/Combat.o
 LIBS = ./libs/json.hpp
