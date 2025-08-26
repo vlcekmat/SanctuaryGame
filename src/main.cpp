@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>
-
+#include <SFML/Graphics.hpp>
 #include "./EventHandler/EventHandler.h"
 #include "./CommandHandler/CommandHandler.h"
 
@@ -80,7 +80,23 @@ using namespace std;
  * Start of the program, handles basic game cycle, as well as catches exceptions
 */
 int main ( void ){
+    
+    sf::Window window(sf::VideoMode({800, 600}), GAME_NAME);
+
+    // run the program as long as the window is open
+    while (window.isOpen())
+    {
+        // check all the window's events that were triggered since the last iteration of the loop
+        while (const std::optional event = window.pollEvent())
+        {
+            // "close requested" event: we close the window
+            if (event->is<sf::Event::Closed>())
+                window.close();
+        }
+    }
+
     GameState * game_state = nullptr;
+        
     try{
         game_state = new GameState();
         EventHandler event_handler(*game_state, game_state->ai);
