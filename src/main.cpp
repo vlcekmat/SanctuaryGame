@@ -81,7 +81,16 @@ using namespace std;
 */
 int main ( void ){
     
-    sf::Window window(sf::VideoMode({800, 600}), GAME_NAME);
+    sf::RenderWindow window(sf::VideoMode({800, 600}), GAME_NAME);
+    window.setVerticalSyncEnabled(true);
+
+    sf::Font font("./assets/Fonts/dogica/TTF/dogica.ttf");
+
+    sf::Text text(font);
+    text.setString("The Harvest Guild");
+    text.setCharacterSize(24);
+    text.setFillColor(sf::Color::White);
+    text.setPosition({200, 280});
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -93,6 +102,14 @@ int main ( void ){
             if (event->is<sf::Event::Closed>())
                 window.close();
         }
+
+        window.clear(sf::Color::Black);
+        // draw everything here...
+
+        window.draw(text);
+
+        // --------------------------------------------------
+        window.display();
     }
 
     GameState * game_state = nullptr;
