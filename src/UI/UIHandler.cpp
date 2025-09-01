@@ -15,7 +15,7 @@ void UIHandler::handleUI() {
     text.setPosition({200, 280});
 
     Rectangle rect({50, 50}, sf::Color(50, 50, 50));
-    Clickable clickableRect({100, 100}, sf::Color::White);
+    Clickable clickableRect({100, 100}, sf::Color::White, sf::Color::Green, sf::Color::Red);
 
     // run the program as long as the window is open
     while (window.isOpen())
