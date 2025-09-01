@@ -14,9 +14,10 @@ void UIHandler::handleUI() {
     text.setFillColor(sf::Color::White);
     text.setPosition({200, 280});
 
-    Rectangle rect({50, 50}, sf::Color(50, 50, 50));
     Clickable clickableRect({100, 100}, sf::Color::White, sf::Color::Green, sf::Color::Red);
+    clickableRect.setPosition({200, 200});
 
+    BorderDecorator rectWithDec = BorderDecorator(clickableRect, 5.0f, sf::Color::Yellow);
     // run the program as long as the window is open
     while (window.isOpen())
     {
@@ -33,11 +34,9 @@ void UIHandler::handleUI() {
 
         window.draw(text);
 
-        rect.draw(window, {10, 10});
-
-        clickableRect.setPosition({200, 200});
+        
         clickableRect.checkCursorOn(window);
-        clickableRect.draw(window, {200, 200});
+        rectWithDec.draw(window, {200, 200});
 
         // --------------------------------------------------
         window.display();
