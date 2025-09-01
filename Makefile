@@ -36,7 +36,10 @@ OBJS = ./src/main.o \
        ./src/AI/Settlement.o \
        ./src/WinConditions/WinConditions.o \
        ./src/Action/Action.o \
-       ./src/Combat/Combat.o
+       ./src/Combat/Combat.o \
+       ./src/UI/Drawable.o \
+       ./src/UI/Clickable.o \
+        ./src/UI/UIHandler.o
 
 LIBS = ./libs/json.hpp
 
